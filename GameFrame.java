@@ -8,9 +8,9 @@ import javax.swing.JOptionPane;
 
 public class GameFrame extends JFrame implements ActionListener{
 	
-	private JButton[][] boards = new JButton[3][3]; //£³ĞĞ£³ÁĞ
-	private int flag = 0;//flag=0¤Ï¡Á¡¡flag=1¤Ï©–
-	private int [][]place = new int [3][3];//¡Á¤ÎˆöºÏ¤Ïplace[i][j]=1,©–¤ÎˆöºÏ¤Ï-1
+	private JButton[][] boards = new JButton[3][3]; //ï¼“è¡Œï¼“åˆ—
+	private int flag = 0;//flag=0ã¯Ã—ã€€flag=1ã¯ã€‡
+	private int [][]place = new int [3][3];//Ã—ã®å ´åˆã¯place[i][j]=1,ã€‡ã®å ´åˆã¯-1
 	
     public GameFrame(){
     	setBounds(100,100,600,600);
@@ -34,21 +34,21 @@ public class GameFrame extends JFrame implements ActionListener{
 		int j = places[1];
 		
 		if (place[i][j] == 1 || place[i][j] == -1) {
-			JOptionPane.showMessageDialog(this,"¤³¤³¤Ï¤â¤¦Èë¤ì¤Ê¤¤¤«¤éËû¤ÎÎ»ÖÃ¤òßx¤ó¤Ç¤¯¤À¤µ¤¤");
+			JOptionPane.showMessageDialog(this,"ã“ã“ã¯ã‚‚ã†å…¥ã‚Œãªã„ã‹ã‚‰ä»–ã®ä½ç½®ã‚’é¸ã‚“ã§ãã ã•ã„");
 			return;
 			
 		}
 		
 		play(clickBtn,i,j);
 		
-		//„ÙØ“¤ÎÅĞ¶Ï
+		//å‹è² ã®åˆ¤æ–­
 		int judge = judge();
 		if(judge == 1) {
-			JOptionPane.showMessageDialog(this,"¡Á¤Î„Ù¤Á");
+			JOptionPane.showMessageDialog(this,"Ã—ã®å‹ã¡");
 		}else if(judge == -1) {
-			JOptionPane.showMessageDialog(this,"©–¤Î„Ù¤Á");
+			JOptionPane.showMessageDialog(this,"ã€‡ã®å‹ã¡");
 		}else if(judge == 0) {
-			JOptionPane.showMessageDialog(this,"Í¬µã");
+			JOptionPane.showMessageDialog(this,"åŒç‚¹");
 		}
 	}
 	
@@ -60,35 +60,35 @@ public class GameFrame extends JFrame implements ActionListener{
 		 * 
 		 */
 		
-		//ºá¤ÎˆöºÏ¤Î„Ù¤Á
+		//æ¨ªã®å ´åˆã®å‹ã¡
 		int first = place[0][0]+place[0][1]+place[0][2];
 		int second = place[1][0]+place[1][1]+place[1][2];
 		int third = place[2][0]+place[2][1]+place[2][2];
 		
-		//¿k¤ÎˆöºÏ¤Î„Ù¤Á
+		//ç¸¦ã®å ´åˆã®å‹ã¡
 		int forth = place[0][0]+place[1][0]+place[2][0];
 		int fifth = place[0][1]+place[1][1]+place[2][1];
 		int sixth = place[0][2]+place[1][2]+place[2][2];
 		
-		//Ğ±¤á¤ÎˆöºÏ¤Î„Ù¤Á
+		//æ–œã‚ã®å ´åˆã®å‹ã¡
 		int seventh = place[0][0]+place[1][1]+place[2][2];
 		int eighth = place[0][2]+place[1][1]+place[2][0];
 		
 		if(first == 3||second == 3||third == 3||forth == 3||fifth == 3||sixth == 3||seventh == 3||eighth == 3) {
-			return 1;//¡Á¤Î„Ù¤Á
+			return 1;//Ã—ã®å‹ã¡
 		}else if(first == -3||second == -3||third == -3||forth == -3||fifth == -3||sixth == -3||seventh == -3||eighth == -3) {
-			return -1;//©–¤Î„Ù¤Á
+			return -1;//ã€‡ã®å‹ã¡
 		}
 		
 		for(int i=0;i<3;i++) {
 			for(int j=0;j<3;j++) {
 				if(place[i][j] == 0) {
-					return -2;//½ñ»Ø¤Î¥²©`¥à¤ò¾A¤±¤Æ¤¤¤¯
+					return -2;//ä»Šå›ã®ã‚²ãƒ¼ãƒ ã‚’ç¶šã‘ã¦ã„ã
 				}
 			}
 		}
 		
-		return 0;//Í¬µã
+		return 0;//åŒç‚¹
 	}
 	
 	private void play(JButton clickBtn,int i,int j) {
@@ -104,9 +104,9 @@ public class GameFrame extends JFrame implements ActionListener{
 		
 	}
     
-	//¥¯¥ê¥Ã¥¯¤ÎÎ»ÖÃ¤ò´_¶¨¤¹¤ë
+	//ã‚¯ãƒªãƒƒã‚¯ã®ä½ç½®ã‚’ç¢ºå®šã™ã‚‹
 	public int[] location(JButton clickBtn) {
-		int[] location = new int [2];//location[0]¤Ïi location[1]¤Ïj
+		int[] location = new int [2];//location[0]ã¯i location[1]ã¯j
 		for(int i=0;i<3;i++) {
 			for (int j=0;j<3;j++) {
 				if (boards[i][j] == clickBtn) {
