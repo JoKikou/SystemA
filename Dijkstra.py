@@ -55,7 +55,7 @@ def ALL_Point_Dijkstra(network):
     num = len(network[0])
     for i in range(1, num + 1):
         for j in range(i + 1, num + 1):
-            print("点", i, "到", j, "点", end='  ')
+            print("点", i, "から", j, "点", end='  ')
             Dijkstra(network, i, j)
 
 
